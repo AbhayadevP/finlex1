@@ -1,3 +1,4 @@
+// src/server/src/routes/cryptocurrencies.ts
 import { Router } from "express";
 import axios from "axios";
 

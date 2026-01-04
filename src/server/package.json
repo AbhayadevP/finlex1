@@ -1,9 +1,11 @@
+
 {
   "name": "finova-server",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "ts-node-dev --respawn src/index.ts",
+    "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },
@@ -16,10 +18,11 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
-    "@types/express": "^4.17.17",
+    "@types/express": "^4.17.21",
     "@types/node": "^20.0.0",
     "@types/pg": "^8.16.0",
-    "ts-node-dev": "^2.0.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.0",
     "typescript": "^5.0.0"
   }
 }

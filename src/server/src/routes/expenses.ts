@@ -1,3 +1,4 @@
+// src/server/src/routes/expenses.ts
 import { Router } from "express";
 import { pool } from "../db";
 

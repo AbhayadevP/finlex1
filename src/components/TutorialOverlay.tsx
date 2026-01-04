@@ -1,3 +1,4 @@
+// src/components/TutorialOverlay.tsx
 import React, { useState } from 'react';
 import { X, ChevronRight, ChevronLeft } from 'lucide-react';
 

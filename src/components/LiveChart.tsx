@@ -1,3 +1,4 @@
+// src/components/LiveChart.tsx
 import React, { useEffect, useRef } from 'react';
 import { createChart, IChartApi } from 'lightweight-charts';
 

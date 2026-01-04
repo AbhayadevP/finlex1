@@ -1,3 +1,4 @@
+// src/components/AIBudgetAdvisor.tsx
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, PieChart, AlertTriangle, CheckCircle, ArrowRight } from 'lucide-react';
 import { format, parseISO, startOfMonth, endOfMonth, isWithinInterval, subMonths } from 'date-fns';

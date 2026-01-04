@@ -1,3 +1,4 @@
+// src/pages/NewsPage.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Shield, RefreshCw } from 'lucide-react';

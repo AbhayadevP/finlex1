@@ -1,3 +1,4 @@
+// src/components/HolographicCube.tsx
 import React, { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Box } from "@react-three/drei";

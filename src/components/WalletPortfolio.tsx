@@ -1,3 +1,4 @@
+// src/components/WalletPortfolio.tsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, ReceiveIcon, History, ExternalLink } from 'lucide-react';
