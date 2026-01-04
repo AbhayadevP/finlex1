@@ -8,7 +8,10 @@ import expenseRoutes from './routes/expenses';
 import { pool } from './db';
 
 
-dotenv.config();
+dotenv.config({ path: __dirname + "/../.env" });
+console.log("🔑 GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
+
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
