@@ -286,8 +286,11 @@ const Home = () => {
 
       {/* News Section */}
       <div className="relative bg-gray-900/80 py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.1),transparent_70%)]" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 🔧 FIX 1: background overlay should NOT block clicks */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.1),transparent_70%)] pointer-events-none" />
+
+        {/* 🔧 FIX 2: content placed ABOVE overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -299,7 +302,9 @@ const Home = () => {
               <Newspaper className="mr-2 h-5 w-5" />
               Crypto Market Updates
             </div>
-            <h2 className="text-4xl font-bold text-white mb-4">Latest Crypto News</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Latest Crypto News
+            </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Stay informed with the most recent updates and trends in the cryptocurrency market
             </p>
@@ -307,7 +312,7 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {loading ? (
-              Array(3).fill().map((_, i) => (
+              Array(3).fill(null).map((_, i) => (
                 <div key={i} className="bg-gray-800/50 animate-pulse rounded-xl overflow-hidden">
                   <div className="h-48 bg-gray-700/50"></div>
                   <div className="p-6 space-y-4">
@@ -323,13 +328,13 @@ const Home = () => {
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: item.id * 0.1 }}
+                  transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                   className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-cyan-500/50 transition-all hover:shadow-lg hover:shadow-cyan-500/10"
                 >
                   <div className="h-48 bg-gray-700/50 relative overflow-hidden">
-                    <img 
-                      src={item.imageUrl} 
+                    <img
+                      src={item.imageUrl}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform hover:scale-105"
                     />
@@ -342,32 +347,45 @@ const Home = () => {
                     <h3 className="text-xl font-semibold text-white mb-4 line-clamp-2">
                       {item.title}
                     </h3>
-                    <a 
-                      href={item.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-cyan-400 hover:text-cyan-300"
-                    >
-                      Read More <ArrowRight className="ml-1 h-4 w-4" />
-                    </a>
                   </div>
                 </motion.div>
               ))
             )}
           </div>
 
+          {/* ✅ BUTTON NOW CLICKABLE */}
           <div className="text-center mt-12">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border border-cyan-500 text-cyan-400 px-6 py-3 rounded-xl hover:bg-cyan-950/30"
-              onClick={() => navigate('/news')}
-            >
-              View All Crypto News
-            </motion.button>
+            <div className="relative inline-block">
+  <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-xl"></div>
+
+  <button
+    onClick={() => navigate('/news')}
+    className="
+      relative
+      px-10 py-5
+      text-lg font-semibold
+      rounded-full
+      bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600
+      text-white
+      shadow-lg shadow-cyan-500/40
+      hover:shadow-cyan-500/70
+      hover:scale-110
+      active:scale-95
+      transition-all duration-300
+      border border-cyan-400/40
+    "
+  >
+    <span className="flex items-center justify-center">
+      View All Crypto News
+      <ArrowRight className="ml-3 h-5 w-5" />
+    </span>
+  </button>
+</div>
+
           </div>
         </div>
       </div>
+
 
       {/* Crypto Account Section */}
       <div className="relative bg-gray-900 py-24">
