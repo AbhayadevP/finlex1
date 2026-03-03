@@ -2,14 +2,16 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import connectDB from "./db";
 import geminiRoutes from './routes/gemini';
 import cryptoRoutes from './routes/cryptocurrencies'; // Your existing routes
 import expenseRoutes from './routes/expenses';
-import { pool } from './db';
+
 
 
 dotenv.config({ path: __dirname + "/../.env" });
 console.log("🔑 GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
+connectDB();
 
 
 
