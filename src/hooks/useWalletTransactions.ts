@@ -32,6 +32,7 @@ export const useWalletTransactions = (walletAddress: string) => {
 
         const walletTxs = blocks
           .flatMap(block => block?.transactions || [])
+          .filter(tx => typeof tx === 'object' && tx !== null && tx.from) // guard string hashes
           .filter(tx => 
             tx.from.toLowerCase() === walletAddress.toLowerCase() ||
             tx.to?.toLowerCase() === walletAddress.toLowerCase()
